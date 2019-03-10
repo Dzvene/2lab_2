@@ -1,12 +1,14 @@
 
 
 public class Main {
+    private static SumProgress sumProgress = new SumProgress();
 
     public static void main(String[] args) {
         long N = 1_000_000;
         long n = 11;
         sumProgress(N, n);
         sumFormulProgress(N, n);
+        sumFormulProgress1(N, n);
     }
 
     public static void sumProgress(long N, long n){
@@ -23,5 +25,11 @@ public class Main {
         System.out.println(sum);
     }
 
+    public static void sumFormulProgress1(long N, long n){
+        new Thread(sumProgress).start();
+        long value = sumProgress.getValue(N, n);  // Передаешь параметры и получаешь значения
+
+        System.out.println(value);
+    }
 
 }
